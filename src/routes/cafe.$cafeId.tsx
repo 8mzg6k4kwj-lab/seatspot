@@ -111,7 +111,7 @@ function CafeDetailPage() {
                       : "oklch(0.6 0.22 25.0)",
                 }}
               />
-            </form>
+            </div>
           </div>
 
           {/* Quick info grid */}
