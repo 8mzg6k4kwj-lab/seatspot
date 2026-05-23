@@ -60,8 +60,8 @@ function HomePage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-3 bg-[#25160e] text-[#f2e3d4]">
           <div className="flex items-center justify-between mb-3 gap-4">
             <div>
-              <h1 className="text-xl sm:text-2xl font-bold text-foreground">SeatSpot</h1>
-              <div className="flex items-center gap-1 text-sm text-muted-foreground mt-0.5">
+              <h1 className="text-xl sm:text-2xl font-bold text-[#f2e3d4]">SeatSpot</h1>
+              <div className="flex items-center gap-1 text-sm text-[#f2e3d4]/70 mt-0.5">
                 <MapPin size={14} />
                 <span>Near Union Square</span>
               </div>
