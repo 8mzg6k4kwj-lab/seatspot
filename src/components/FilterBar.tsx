@@ -53,7 +53,7 @@ export function FilterBar({
                 : "bg-card border border-border text-muted-foreground hover:text-foreground"
             }`}
           >
-            {filter === "open" ? "Has Seats" : filter}
+            {filter === "open" ? "Has Seats" : filter === "outlets" ? "Outlets" : filter}
           </button>
         ))}
       </div>
