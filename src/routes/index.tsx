@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { MapPin, Navigation } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { cafes } from "@/lib/cafes";
 import { CafeCard } from "@/components/CafeCard";
 import { FilterBar } from "@/components/FilterBar";
@@ -70,9 +70,6 @@ function HomePage() {
                 <span>Near Union Square</span>
               </div>
             </div>
-            <button className="p-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
-              <Navigation size={18} />
-            </button>
           </div>
 
           <FilterBar
