@@ -49,8 +49,8 @@ export function FilterBar({
             onClick={() => onFilterChange(filter)}
             className={`px-3.5 py-1.5 rounded-full text-sm font-medium capitalize transition-colors ${
               activeFilter === filter
-                ? "bg-primary text-primary-foreground"
-                : "bg-card border border-border text-muted-foreground hover:text-foreground"
+                ? "bg-[#25160e] text-[#f2e3d4]"
+                : "bg-[#f2e3d4] border border-[#25160e]/20 text-[#25160e] hover:bg-[#e8d5c4]"
             }`}
           >
             {filter === "open" ? "Has Seats" : filter === "outlets" ? "Outlets" : filter}
