@@ -43,7 +43,7 @@ export function FilterBar({
 
       {/* Filters */}
       <div className="flex gap-2">
-        {(["all", "open", "nearby"] as const).map((filter) => (
+        {(["all", "open", "nearby", "outlets"] as const).map((filter) => (
           <button
             key={filter}
             onClick={() => onFilterChange(filter)}
