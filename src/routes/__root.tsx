@@ -72,14 +72,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "SeatSpot — Find a Seat at NYC Cafes" },
+      { name: "description", content: "See real-time seat availability at cafes near you. No more walking in to find every table taken." },
+      { property: "og:title", content: "SeatSpot — Find a Seat at NYC Cafes" },
+      { property: "og:description", content: "See real-time seat availability at cafes near you." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@SeatSpot" },
     ],
     links: [
       {
