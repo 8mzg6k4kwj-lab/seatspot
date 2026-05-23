@@ -31,6 +31,10 @@ function HomePage() {
       result = result.filter((c) => c.seatsAvailable > 0);
     }
 
+    if (activeFilter === "outlets") {
+      result = result.filter((c) => c.outlets);
+    }
+
     if (activeFilter === "nearby") {
       result = result.filter((c) => c.distance <= 1.0);
     }
