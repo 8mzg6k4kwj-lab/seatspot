@@ -65,7 +65,7 @@ export const cafes: Cafe[] = [
     hours: "7am - 8pm",
     rating: 4.6,
     priceLevel: 2,
-    imageUrl: "https://images.unsplash.com/photo-1463797221720-6b7e9186f80d?w=800&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&auto=format&fit=crop",
     lastUpdated: "1 min ago",
   },
   {
