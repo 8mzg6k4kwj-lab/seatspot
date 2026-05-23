@@ -57,7 +57,7 @@ function HomePage() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <div className="sticky top-0 z-10 bg-background/80 backdrop-blur-lg border-b border-border">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-3">
+        <div className="px-3.5 py-1.5 rounded-full text-sm font-medium capitalize transition-colors bg-card border border-border text-muted-foreground hover:text-foreground bg-[#f2e3d4]">
           <div className="flex items-center justify-between mb-3 gap-4">
             <div>
               <h1 className="text-xl sm:text-2xl font-bold text-foreground">SeatSpot</h1>
