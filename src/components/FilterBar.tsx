@@ -49,7 +49,7 @@ export function FilterBar({
             onClick={() => onFilterChange(filter)}
             className={`px-3.5 py-1.5 rounded-full text-sm font-medium capitalize transition-colors ${
               activeFilter === filter
-                ? "bg-[#f2e3d4] text-[#25160e]"
+                ? "bg-[#a07a5c] text-[#f2e3d4]"
                 : "border border-[#f2e3d4]/20 bg-[#f2e3d4] text-[#25160e]"
             }`}
           >
