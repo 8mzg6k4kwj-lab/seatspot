@@ -38,16 +38,16 @@ function CafeDetailPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Image */}
-      <div className="relative h-64">
+      <div className="relative h-64 sm:h-80 md:h-96">
         <img
           src={cafe.imageUrl}
           alt={cafe.name}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset- 10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
 
         {/* Top bar */}
-        <div className="absolute top-0 left-0 right-0 p-4 flex items-center justify-between">
+        <div className="absolute top-0 left-0 right-0 p-4 sm:px-6 lg:px-8 flex items-center justify-between max-w-4xl mx-auto">
           <Link
             to="/"
             className="p-2.5 rounded-full bg-white/90 backdrop-blur-sm text-foreground shadow-sm hover:bg-white transition-colors"
@@ -63,7 +63,7 @@ function CafeDetailPage() {
       </div>
 
       {/* Content */}
-      <div className="max-w-lg mx-auto px-4 -mt-6 relative">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative">
         <div className="bg-card rounded-2xl border border-border p-5 shadow-sm">
           {/* Title row */}
           <div className="flex items-start justify-between gap-3">
