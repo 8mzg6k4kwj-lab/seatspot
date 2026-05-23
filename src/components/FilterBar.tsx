@@ -29,7 +29,7 @@ export function FilterBar({
           placeholder="Search cafes..."
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
-          className="w-full rounded-xl bg-card border border-border pl-10 pr-4 py-3 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring text-[#25160e] bg-[#f2e3d4]"
+          className="w-full rounded-xl border border-[#25160e]/10 pl-10 pr-4 py-3 text-sm placeholder:text-[#25160e]/50 focus:outline-none focus:ring-2 focus:ring-ring text-[#25160e] bg-[#f2e3d4]"
         />
         <button
           onClick={() => setShowFilters(!showFilters)}
