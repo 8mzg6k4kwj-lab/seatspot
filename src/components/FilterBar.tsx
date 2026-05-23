@@ -50,7 +50,7 @@ export function FilterBar({
             className={`px-3.5 py-1.5 rounded-full text-sm font-medium capitalize transition-colors ${
               activeFilter === filter
                 ? "bg-[#f2e3d4] text-[#25160e]"
-                : "bg-[#25160e] border border-[#f2e3d4]/20 text-[#f2e3d4] hover:bg-[#3d2a1e]"
+                : "border border-[#f2e3d4]/20 bg-[#f2e3d4] text-[#25160e]"
             }`}
           >
             {filter === "open" ? "Has Seats" : filter === "outlets" ? "Outlets" : filter}
