@@ -4,8 +4,8 @@ import { Search, SlidersHorizontal } from "lucide-react";
 interface FilterBarProps {
   searchQuery: string;
   onSearchChange: (q: string) => void;
-  activeFilter: "all" | "open" | "nearby";
-  onFilterChange: (f: "all" | "open" | "nearby") => void;
+  activeFilter: "all" | "open" | "nearby" | "outlets";
+  onFilterChange: (f: "all" | "open" | "nearby" | "outlets") => void;
 }
 
 export function FilterBar({
