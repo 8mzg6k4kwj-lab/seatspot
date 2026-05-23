@@ -4,8 +4,8 @@ import { Search, SlidersHorizontal } from "lucide-react";
 interface FilterBarProps {
   searchQuery: string;
   onSearchChange: (q: string) => void;
-  activeFilter: "all" | "open" | "nearby";
-  onFilterChange: (f: "all" | "open" | "nearby") => void;
+  activeFilter: "all" | "open" | "nearby" | "outlets";
+  onFilterChange: (f: "all" | "open" | "nearby" | "outlets") => void;
 }
 
 export function FilterBar({
@@ -43,7 +43,7 @@ export function FilterBar({
 
       {/* Filters */}
       <div className="flex gap-2">
-        {(["all", "open", "nearby"] as const).map((filter) => (
+        {(["all", "open", "nearby", "outlets"] as const).map((filter) => (
           <button
             key={filter}
             onClick={() => onFilterChange(filter)}
@@ -53,7 +53,7 @@ export function FilterBar({
                 : "bg-card border border-border text-muted-foreground hover:text-foreground"
             }`}
           >
-            {filter === "open" ? "Has Seats" : filter}
+            {filter === "open" ? "Has Seats" : filter === "outlets" ? "Outlets" : filter}
           </button>
         ))}
       </div>

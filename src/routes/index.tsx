@@ -12,7 +12,7 @@ export const Route = createFileRoute("/")({
 
 function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeFilter, setActiveFilter] = useState<"all" | "open" | "nearby">("all");
+  const [activeFilter, setActiveFilter] = useState<"all" | "open" | "nearby" | "outlets">("all");
 
   const filteredCafes = useMemo(() => {
     let result = [...cafes];
@@ -29,6 +29,10 @@ function HomePage() {
 
     if (activeFilter === "open") {
       result = result.filter((c) => c.seatsAvailable > 0);
+    }
+
+    if (activeFilter === "outlets") {
+      result = result.filter((c) => c.outlets);
     }
 
     if (activeFilter === "nearby") {
