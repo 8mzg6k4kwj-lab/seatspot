@@ -13,7 +13,9 @@ export interface Cafe {
   rating: number;
   priceLevel: 1 | 2 | 3;
   imageUrl: string;
-  lastUpdated: string; // "2 min ago", etc.
+  lastUpdated: string;
+  lat: number;
+  lng: number;
 }
 
 export const cafes: Cafe[] = [
