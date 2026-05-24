@@ -4,7 +4,6 @@ import { CafeCard } from "@/components/CafeCard";
 import { FilterBar } from "@/components/FilterBar";
 import { MapView } from "@/components/MapView";
 import { useCafeStore } from "@/lib/cafeStore";
-import { useCafeStore } from "@/lib/cafeStore";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
