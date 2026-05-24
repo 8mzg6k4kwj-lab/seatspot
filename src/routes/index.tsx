@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { CafeCard } from "@/components/CafeCard";
 import { FilterBar } from "@/components/FilterBar";
 import { MapView } from "@/components/MapView";
-import { getAvailabilityStatus } from "@/lib/cafes";
+import { useCafeStore } from "@/lib/cafeStore";
 import { useCafeStore } from "@/lib/cafeStore";
 
 export const Route = createFileRoute("/")({
