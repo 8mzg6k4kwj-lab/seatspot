@@ -11,7 +11,7 @@ interface UpdateSeatsSheetProps {
 }
 
 const OPTIONS: { value: SeatStatus; label: string; sub: string; emoji: string; ring: string }[] = [
-  { value: "none", label: "No seats", sub: "It's packed right now", emoji: "🚫", ring: "ring-seat-red/40" },
+  { value: "none", label: "No open seats", sub: "It's packed right now", emoji: "🚫", ring: "ring-seat-red/40" },
   { value: "few", label: "A few seats", sub: "1–3 spots open", emoji: "☕", ring: "ring-seat-amber/40" },
   { value: "plenty", label: "Plenty of seats", sub: "Lots of room", emoji: "✨", ring: "ring-seat-green/40" },
 ];
@@ -49,7 +49,7 @@ export function UpdateSeatsSheet({ cafe, open, onClose }: UpdateSeatsSheetProps)
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-[#7a5a3e]">
-              <Users size={14} /> Help others
+              <Users size={14} /> HELP OTHERS
             </div>
             <h2 className="text-lg font-bold mt-1">How many seats are open right now?</h2>
             <p className="text-sm text-[#5c3f2a] mt-0.5 truncate">{cafe.name}</p>
@@ -80,7 +80,7 @@ export function UpdateSeatsSheet({ cafe, open, onClose }: UpdateSeatsSheetProps)
         </div>
 
         <p className="text-[11px] text-[#7a5a3e] text-center mt-4">
-          Your update helps the next person walking in. Thanks ☕
+          Your update helps the next person find a seat. Thanks ☕
         </p>
       </div>
     </div>
