@@ -75,10 +75,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "SeatSpot — Find a Seat at NYC Cafes" },
       { name: "description", content: "See real-time seat availability at cafes near you. No more walking in to find every table taken." },
       { property: "og:title", content: "SeatSpot — Find a Seat at NYC Cafes" },
-      { property: "og:description", content: "See real-time seat availability at cafes near you." },
+      { property: "og:description", content: "See real-time seat availability at cafes near you. No more walking in to find every table taken." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@SeatSpot" },
+      { name: "twitter:title", content: "SeatSpot — Find a Seat at NYC Cafes" },
+      { name: "twitter:description", content: "See real-time seat availability at cafes near you. No more walking in to find every table taken." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/16937392-f2c7-4238-8441-921646a7332a/id-preview-39afd8ae--5fbfa6c2-f04a-49a4-8159-832aee26b9a8.lovable.app-1779586281725.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/16937392-f2c7-4238-8441-921646a7332a/id-preview-39afd8ae--5fbfa6c2-f04a-49a4-8159-832aee26b9a8.lovable.app-1779586281725.png" },
     ],
     links: [
       {
