@@ -4,6 +4,7 @@ import { MapPin } from "lucide-react";
 import { cafes } from "@/lib/cafes";
 import { CafeCard } from "@/components/CafeCard";
 import { FilterBar } from "@/components/FilterBar";
+import { MapView } from "@/components/MapView";
 import { getAvailabilityStatus } from "@/lib/cafes";
 
 export const Route = createFileRoute("/")({
@@ -96,15 +97,19 @@ function HomePage() {
         </div>
       </div>
 
-      {/* Cafe List */}
+      {/* Cafe List or Map */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {filteredCafes.map((cafe) => (
-            <CafeCard key={cafe.id} cafe={cafe} />
-          ))}
-        </div>
+        {view === "map" ? (
+          <MapView cafes={filteredCafes} />
+        ) : (
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {filteredCafes.map((cafe) => (
+              <CafeCard key={cafe.id} cafe={cafe} />
+            ))}
+          </div>
+        )}
 
-        {filteredCafes.length === 0 && (
+        {filteredCafes.length === 0 && view === "list" && (
           <div className="text-center py-16">
             <div className="text-4xl mb-3">☕</div>
             <p className="text-muted-foreground">No cafes found</p>
