@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Star, Users, MapPin, Wifi, Plug } from "lucide-react";
+import { Star, MapPin, Wifi, Plug } from "lucide-react";
 import type { Cafe } from "@/lib/cafes";
+import { AvailabilityBadge } from "./AvailabilityBadge";
 
 interface MapViewProps {
   cafes: Cafe[];
@@ -80,8 +81,10 @@ export function MapView({ cafes }: MapViewProps) {
                     {cafe.rating}
                   </span>
                 </div>
+                <div className="mt-2">
+                  <AvailabilityBadge cafe={cafe} size="sm" />
+                </div>
                 <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-2 text-xs text-muted-foreground">
-                  <span className="flex items-center gap-1"><Users size={12} />{cafe.seatsAvailable}</span>
                   <span className="flex items-center gap-1"><MapPin size={12} />{cafe.distance}mi</span>
                   {cafe.wifi && <span className="flex items-center gap-1"><Wifi size={12} />WiFi</span>}
                   {cafe.outlets && <span className="flex items-center gap-1"><Plug size={12} />Outlets</span>}
