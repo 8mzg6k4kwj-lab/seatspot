@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, MapPin, Clock, Wifi, Plug, Volume2, Star, Share2, Navigation } from "lucide-react";
-import { getCafeById, getAvailabilityStatus } from "@/lib/cafes";
+import { ArrowLeft, MapPin, Clock, Wifi, Plug, Volume2, Star, Share2, Navigation, PencilLine } from "lucide-react";
+import { timeAgo } from "@/lib/cafes";
+import { useCafeStore } from "@/lib/cafeStore";
 import { AvailabilityBadge } from "@/components/AvailabilityBadge";
+import { UpdateSeatsSheet } from "@/components/UpdateSeatsSheet";
 
 export const Route = createFileRoute("/cafe/$cafeId")({
   component: CafeDetailPage,
@@ -9,7 +12,9 @@ export const Route = createFileRoute("/cafe/$cafeId")({
 
 function CafeDetailPage() {
   const { cafeId } = Route.useParams();
-  const cafe = getCafeById(cafeId);
+  const { getCafe } = useCafeStore();
+  const cafe = getCafe(cafeId);
+  const [open, setOpen] = useState(false);
 
   if (!cafe) {
     return (
@@ -24,29 +29,16 @@ function CafeDetailPage() {
     );
   }
 
-  const status = getAvailabilityStatus(cafe);
-  const fullness = Math.round(((cafe.totalSeats - cafe.seatsAvailable) / cafe.totalSeats) * 100);
-
-  const noiseLabel = {
-    quiet: "Quiet",
-    moderate: "Moderate",
-    lively: "Lively",
-  };
-
+  const noiseLabel = { quiet: "Quiet", moderate: "Moderate", lively: "Lively" } as const;
   const priceLabels = ["$", "$$", "$$$"];
 
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Image */}
       <div className="relative h-64 sm:h-80 md:h-96">
-        <img
-          src={cafe.imageUrl}
-          alt={cafe.name}
-          className="w-full h-full object-cover"
-        />
+        <img src={cafe.imageUrl} alt={cafe.name} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
 
-        {/* Top bar */}
         <div className="absolute top-0 left-0 right-0 p-4 sm:px-6 lg:px-8 flex items-center justify-between max-w-4xl mx-auto">
           <Link
             to="/"
@@ -63,82 +55,65 @@ function CafeDetailPage() {
       </div>
 
       {/* Content */}
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative pb-28">
         <div className="bg-card rounded-2xl border border-border p-5 shadow-sm">
-          {/* Title row */}
           <div className="flex items-start justify-between gap-3">
-            <div className="min-w-1">
+            <div className="min-w-0">
               <h1 className="text-xl font-bold text-foreground">{cafe.name}</h1>
               <div className="flex items-center gap-1 text-sm text-muted-foreground mt-1">
                 <MapPin size={14} />
                 <span>{cafe.address} · {cafe.neighborhood}</span>
               </div>
             </div>
-            <div className="flex items-center gap-0.5 shrink-1 bg-amber-50 px-2 py-1 rounded-lg">
+            <div className="flex items-center gap-0.5 shrink-0 bg-amber-50 px-2 py-1 rounded-lg">
               <Star size={14} className="fill-amber-400 text-amber-400" />
               <span className="text-sm font-semibold">{cafe.rating}</span>
             </div>
           </div>
 
-          {/* Availability big badge */}
+          {/* Availability + Update CTA */}
           <div className="mt-4 p-4 rounded-xl bg-latte border border-border">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground">Seat availability</p>
-                <div className="mt-1">
-                  <AvailabilityBadge cafe={cafe} size="lg" />
-                </div>
-              </div>
-              <div className="text-right">
-                <p className="text-2xl font-bold text-foreground">
-                  {cafe.seatsAvailable}/{cafe.totalSeats}
-                </p>
-                <p className="text-xs text-muted-foreground">{fullness}% full</p>
-              </div>
+            <p className="text-sm text-muted-foreground">Seat availability</p>
+            <div className="mt-1.5 flex items-center justify-between gap-3 flex-wrap">
+              <AvailabilityBadge cafe={cafe} size="lg" />
+              <button
+                onClick={() => setOpen(true)}
+                className="inline-flex items-center gap-1.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold px-3.5 py-2 hover:bg-primary/90 transition-colors active:scale-[0.98]"
+              >
+                <PencilLine size={14} />
+                Update seats
+              </button>
             </div>
-
-            {/* Progress bar */}
-            <div className="mt-3 h-2 rounded-full bg-border overflow-hidden">
-              <div
-                className="h-full rounded-full transition-all duration-500"
-                style={{
-                  width: `${fullness}%`,
-                  backgroundColor:
-                    status === "green"
-                      ? "oklch(0.65 0.18 145.0)"
-                      : status === "amber"
-                      ? "oklch(0.75 0.14 85.0)"
-                      : "oklch(0.6 0.22 25.0)",
-                }}
-              />
-            </div>
+            <p className="text-xs text-muted-foreground mt-3">
+              Availability updated {timeAgo(cafe.lastUpdatedAt)}
+            </p>
           </div>
 
           {/* Quick info grid */}
           <div className="grid grid-cols-2 gap-3 mt-4">
             <div className="flex items-center gap-2.5 p-3 rounded-xl bg-latte">
-              <Clock size={18} className="text-primary shrink-1" />
+              <Clock size={18} className="text-primary shrink-0" />
               <div>
                 <p className="text-xs text-muted-foreground">Hours</p>
                 <p className="text-sm font-medium">{cafe.hours}</p>
               </div>
             </div>
             <div className="flex items-center gap-2.5 p-3 rounded-xl bg-latte">
-              <MapPin size={18} className="text-primary shrink-1" />
+              <MapPin size={18} className="text-primary shrink-0" />
               <div>
                 <p className="text-xs text-muted-foreground">Distance</p>
                 <p className="text-sm font-medium">{cafe.distance} mi away</p>
               </div>
             </div>
             <div className="flex items-center gap-2.5 p-3 rounded-xl bg-latte">
-              <Volume2 size={18} className="text-primary shrink-1" />
+              <Volume2 size={18} className="text-primary shrink-0" />
               <div>
                 <p className="text-xs text-muted-foreground">Noise</p>
                 <p className="text-sm font-medium">{noiseLabel[cafe.noiseLevel]}</p>
               </div>
             </div>
             <div className="flex items-center gap-2.5 p-3 rounded-xl bg-latte">
-              <span className="text-sm font-medium text-primary shrink-1">{priceLabels[cafe.priceLevel - 1]}</span>
+              <span className="text-sm font-medium text-primary shrink-0">{priceLabels[cafe.priceLevel - 1]}</span>
               <div>
                 <p className="text-xs text-muted-foreground">Price</p>
                 <p className="text-sm font-medium">{cafe.priceLevel === 1 ? "Budget" : cafe.priceLevel === 2 ? "Moderate" : "Premium"}</p>
@@ -165,21 +140,24 @@ function CafeDetailPage() {
               </span>
             </div>
           </div>
-
-          {/* Last updated */}
-          <p className="text-xs text-muted-foreground mt-4">
-            Last updated {cafe.lastUpdated}
-          </p>
         </div>
 
-        {/* CTA */}
-        <div className="mt-4 pb-8">
+        <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <button
+            onClick={() => setOpen(true)}
+            className="w-full flex items-center justify-center gap-2 rounded-xl bg-card border border-border text-foreground font-semibold py-3.5 hover:bg-latte transition-colors active:scale-[0.98]"
+          >
+            <PencilLine size={18} />
+            Update seats
+          </button>
           <button className="w-full flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground font-semibold py-3.5 hover:bg-primary/90 transition-colors active:scale-[0.98]">
             <Navigation size={18} />
             Get Directions
           </button>
         </div>
       </div>
+
+      <UpdateSeatsSheet cafe={cafe} open={open} onClose={() => setOpen(false)} />
     </div>
   );
 }
