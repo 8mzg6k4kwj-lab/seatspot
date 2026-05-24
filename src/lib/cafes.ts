@@ -1,10 +1,12 @@
+export type SeatStatus = "none" | "few" | "plenty";
+
 export interface Cafe {
   id: string;
   name: string;
   address: string;
   neighborhood: string;
   distance: number; // miles
-  seatsAvailable: number;
+  seatsAvailable: number; // legacy / approximate count, kept for detail view
   totalSeats: number;
   wifi: boolean;
   outlets: boolean;
@@ -14,8 +16,41 @@ export interface Cafe {
   priceLevel: 1 | 2 | 3;
   imageUrl: string;
   lastUpdated: string;
+  lastUpdatedAt: number; // epoch ms
+  seatStatus: SeatStatus;
   lat: number;
   lng: number;
+}
+
+export const SEAT_STATUS_LABEL: Record<SeatStatus, string> = {
+  none: "No seats",
+  few: "A few seats",
+  plenty: "Plenty of seats",
+};
+
+export const SEAT_STATUS_FULL_LABEL: Record<SeatStatus, string> = {
+  none: "No seats available",
+  few: "A few seats available",
+  plenty: "Plenty of seats available",
+};
+
+export function seatStatusFromCount(seats: number, total: number): SeatStatus {
+  if (seats <= 0) return "none";
+  if (seats / total < 0.35) return "few";
+  return "plenty";
+}
+
+export function timeAgo(ts: number): string {
+  const diff = Math.max(0, Date.now() - ts);
+  const mins = Math.floor(diff / 60000);
+  if (mins < 1) return "just now";
+  if (mins === 1) return "1 min ago";
+  if (mins < 60) return `${mins} min ago`;
+  const hrs = Math.floor(mins / 60);
+  if (hrs === 1) return "1 hr ago";
+  if (hrs < 24) return `${hrs} hrs ago`;
+  const days = Math.floor(hrs / 24);
+  return days === 1 ? "1 day ago" : `${days} days ago`;
 }
 
 export const cafes: Cafe[] = [
