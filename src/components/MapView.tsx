@@ -34,7 +34,7 @@ export function MapView({ cafes }: MapViewProps) {
     );
   }
 
-  const { MapContainer, TileLayer, CircleMarker, Tooltip } = Mod.rl;
+  const { MapContainer, TileLayer, CircleMarker, Popup } = Mod.rl;
 
   const center: [number, number] = [40.7340, -73.9920];
 
@@ -57,25 +57,20 @@ export function MapView({ cafes }: MapViewProps) {
               fillOpacity: 1,
             }}
             eventHandlers={{
-              mouseover: () => setHovered(cafe),
-              mouseout: () => setHovered((h) => (h?.id === cafe.id ? null : h)),
+              mouseover: (e: any) => {
+                setHovered(cafe);
+                e.target.openPopup();
+              },
             }}
           >
-            <Tooltip direction="top" offset={[0, -8]} opacity={1} permanent={false}>
-              {cafe.name}
-            </Tooltip>
+            <Popup autoPan={false} closeButton={false} offset={[0, -8]} maxWidth={300}>
+              <div className="w-64">
+                <CafeCard cafe={cafe} />
+              </div>
+            </Popup>
           </CircleMarker>
         ))}
       </MapContainer>
-
-      {hovered && (
-        <div
-          className="absolute top-4 right-4 z-[1000] w-72 pointer-events-none"
-          onMouseEnter={(e) => e.stopPropagation()}
-        >
-          <CafeCard cafe={hovered} />
-        </div>
-      )}
     </div>
   );
 }
