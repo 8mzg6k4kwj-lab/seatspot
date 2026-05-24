@@ -10,6 +10,7 @@ import {
 
 import appCss from "../styles.css?url";
 import { CafeStoreProvider } from "@/lib/cafeStore";
+import { SplashScreen } from "@/components/SplashScreen";
 
 function NotFoundComponent() {
   return (
