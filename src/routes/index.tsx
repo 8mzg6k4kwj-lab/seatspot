@@ -68,10 +68,6 @@ function HomePage() {
             <div>
               <h1 className="text-xl sm:text-2xl font-bold text-[#f2e3d4]">SeatSpot</h1>
               <p className="text-sm text-[#f2e3d4]/80 mt-0.5 italic">find a cafe. find a seat.</p>
-              <div className="flex items-center gap-1 text-sm text-[#f2e3d4]/70 mt-1">
-                <MapPin size={14} />
-                <span>Near Union Square</span>
-              </div>
             </div>
           </div>
 
