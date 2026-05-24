@@ -143,13 +143,13 @@ function CafeDetailPage() {
         </div>
 
         <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <button
-            onClick={() => setOpen(true)}
+          <Link
+            to="/"
             className="w-full flex items-center justify-center gap-2 rounded-xl bg-card border border-border text-foreground font-semibold py-3.5 hover:bg-latte transition-colors active:scale-[0.98]"
           >
-            <PencilLine size={18} />
-            Update seats
-          </button>
+            <ArrowLeft size={18} />
+            Back to results
+          </Link>
           <button className="w-full flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground font-semibold py-3.5 hover:bg-primary/90 transition-colors active:scale-[0.98]">
             <Navigation size={18} />
             Get Directions
