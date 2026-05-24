@@ -72,13 +72,13 @@ export function CafeCard({ cafe }: CafeCardProps) {
 
         {/* Update row (outside the Link to avoid invalid <button> in <a>) */}
         <div className="flex items-center justify-between gap-2 px-4 pb-4 pt-3 mt-0 border-t border-border">
-          <p className="text-xs text-muted-foreground" suppressHydrationWarning>
+          <p className="text-xs text-muted-foreground whitespace-nowrap truncate min-w-0" suppressHydrationWarning>
             Updated {timeAgo(cafe.lastUpdatedAt)}
           </p>
           <button
             type="button"
             onClick={() => setOpen(true)}
-            className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold px-3 py-1.5 hover:bg-primary/15 transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold px-3 py-1.5 hover:bg-primary/15 transition-colors whitespace-nowrap shrink-0"
           >
             <PencilLine size={12} />
             Update seats
