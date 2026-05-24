@@ -1,7 +1,6 @@
-import { MapPin, Wifi, Plug, Star } from "lucide-react";
+import { MapPin, Wifi, Plug, Star, Users } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import type { Cafe } from "@/lib/cafes";
-import { AvailabilityBadge } from "./AvailabilityBadge";
 
 interface CafeCardProps {
   cafe: Cafe;
@@ -21,10 +20,7 @@ export function CafeCard({ cafe }: CafeCardProps) {
           alt={cafe.name}
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
-        <div className="absolute inset- 20 to-transparent" />
-        <div className="absolute top-3 left-3">
-          <AvailabilityBadge cafe={cafe} size="sm" />
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         <div className="absolute top-3 right-3 flex items-center gap-0.5 rounded-full bg-black/60 px-2 py-0.5 text-xs text-white backdrop-blur-sm">
           <Star size={12} className="fill-amber-400 text-amber-400" />
           {cafe.rating}
@@ -41,6 +37,10 @@ export function CafeCard({ cafe }: CafeCardProps) {
         </div>
 
         <div className="flex items-center gap-4 mt-3 text-sm text-muted-foreground">
+          <span className="flex items-center gap-1">
+            <Users size={14} />
+            {cafe.seatsAvailable} seats
+          </span>
           <span className="flex items-center gap-1">
             <MapPin size={14} />
             {cafe.distance} mi
