@@ -85,7 +85,7 @@ function CafeDetailPage() {
               </button>
             </div>
             <p className="text-xs text-muted-foreground mt-3">
-              Availability updated {timeAgo(cafe.lastUpdatedAt)}
+              Availability updated {cafe.lastUpdated}
             </p>
           </div>
 

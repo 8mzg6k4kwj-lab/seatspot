@@ -72,8 +72,8 @@ export function CafeCard({ cafe }: CafeCardProps) {
 
         {/* Update row (outside the Link to avoid invalid <button> in <a>) */}
         <div className="flex items-center justify-between gap-2 px-4 pb-4 pt-3 mt-0 border-t border-border">
-          <p className="text-xs text-muted-foreground whitespace-nowrap truncate min-w-0" suppressHydrationWarning>
-            Updated {timeAgo(cafe.lastUpdatedAt)}
+          <p className="text-xs text-muted-foreground whitespace-nowrap truncate min-w-0">
+            Updated {cafe.lastUpdated}
           </p>
           <button
             type="button"
