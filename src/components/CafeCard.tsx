@@ -12,7 +12,7 @@ export function CafeCard({ cafe }: CafeCardProps) {
     <Link
       to="/cafe/$cafeId"
       params={{ cafeId: cafe.id }}
-      className="group block rounded-2xl bg-card border border-border overflow-hidden transition-all duration-200 hover:shadow-lg hover:border-primary/20 active:scale-[0.98] opacity-10"
+      className="group block rounded-2xl bg-card border border-border overflow-hidden transition-all duration-200 hover:shadow-lg hover:border-primary/20 active:scale-[0.98]"
     >
       {/* Image */}
       <div className="relative h-40 overflow-hidden">
