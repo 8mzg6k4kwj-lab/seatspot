@@ -1,17 +1,16 @@
 import { useState, useMemo } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { MapPin } from "lucide-react";
-import { cafes } from "@/lib/cafes";
 import { CafeCard } from "@/components/CafeCard";
 import { FilterBar } from "@/components/FilterBar";
 import { MapView } from "@/components/MapView";
-import { getAvailabilityStatus } from "@/lib/cafes";
+import { useCafeStore } from "@/lib/cafeStore";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
 function HomePage() {
+  const { cafes } = useCafeStore();
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState<"all" | "open" | "nearby" | "outlets">("all");
   const [view, setView] = useState<"list" | "map">("list");
@@ -30,7 +29,7 @@ function HomePage() {
     }
 
     if (activeFilter === "open") {
-      result = result.filter((c) => c.seatsAvailable > 0);
+      result = result.filter((c) => c.seatStatus !== "none");
     }
 
     if (activeFilter === "outlets") {
@@ -41,23 +40,17 @@ function HomePage() {
       result = result.filter((c) => c.distance <= 1.0);
     }
 
-    // Sort: available first, then by distance
+    // Sort: plenty > few > none, then by distance
+    const rank = { plenty: 0, few: 1, none: 2 } as const;
     result.sort((a, b) => {
-      const aStatus = getAvailabilityStatus(a);
-      const bStatus = getAvailabilityStatus(b);
-      if (aStatus !== bStatus) {
-        if (aStatus === "green" && bStatus !== "green") return -1;
-        if (bStatus === "green" && aStatus !== "green") return 1;
-        if (aStatus === "amber" && bStatus === "red") return -1;
-        if (bStatus === "amber" && aStatus === "red") return 1;
-      }
+      const d = rank[a.seatStatus] - rank[b.seatStatus];
+      if (d !== 0) return d;
       return a.distance - b.distance;
     });
 
     return result;
-  }, [searchQuery, activeFilter]);
+  }, [cafes, searchQuery, activeFilter]);
 
-  const openCount = cafes.filter((c) => c.seatsAvailable > 0).length;
 
   return (
     <div className="min-h-screen bg-[#462b1b] text-[#f2e3d4]">
