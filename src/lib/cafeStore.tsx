@@ -15,7 +15,16 @@ type Override = { seatStatus: SeatStatus; lastUpdatedAt: number };
 function loadOverrides(): Record<string, Override> {
   if (typeof window === "undefined") return {};
   try {
-    return JSON.parse(window.localStorage.getItem(STORAGE_KEY) || "{}");
+    const raw = JSON.parse(window.localStorage.getItem(STORAGE_KEY) || "{}");
+    const now = Date.now();
+    const cleaned: Record<string, Override> = {};
+    for (const [id, o] of Object.entries(raw as Record<string, Override>)) {
+      const ts = Number(o?.lastUpdatedAt);
+      // Drop entries with missing/invalid timestamps (e.g. older than 7 days or in the future)
+      if (!o?.seatStatus || !Number.isFinite(ts) || ts <= 0 || now - ts > 7 * 864e5 || ts > now + 60_000) continue;
+      cleaned[id] = { seatStatus: o.seatStatus, lastUpdatedAt: ts };
+    }
+    return cleaned;
   } catch {
     return {};
   }
@@ -26,6 +35,9 @@ export function CafeStoreProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     setOverrides(loadOverrides());
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(loadOverrides()));
+    } catch {}
   }, []);
 
   const cafes = useMemo(
@@ -36,6 +48,7 @@ export function CafeStoreProvider({ children }: { children: React.ReactNode }) {
       }),
     [overrides]
   );
+
 
   const updateSeats = useCallback((id: string, status: SeatStatus) => {
     setOverrides((prev) => {
