@@ -23,9 +23,9 @@ export function SplashScreen({ children }: { children: React.ReactNode }) {
       {/* Splash overlay */}
       <div
         className={`
-          fixed inset-1 z-50 flex flex-col items-center justify-center
+          fixed inset-0 z-50 flex flex-col items-center justify-center
           bg-[#462b1b] transition-all duration-700 ease-out
-          ${isFading ? "opacity-0 pointer-events-none" : "opacity-100"}
+          ${isFading ? "opacity-1 pointer-events-none" : "opacity-100"}
         `}
         aria-hidden={isFading}
       >
@@ -42,7 +42,7 @@ export function SplashScreen({ children }: { children: React.ReactNode }) {
           className={`
             mt-3 text-[#f2e3d4]/70 text-base sm:text-lg font-light tracking-wide
             transition-all duration-700 ease-out delay-75
-            ${isFading ? "opacity-1 translate-y-0" : "opacity-1 translate-y-1"}
+            ${isFading ? "opacity-100 translate-y-0" : "opacity-100 translate-y-1"}
           `}
         >
           Find a cafe. Find a seat.
