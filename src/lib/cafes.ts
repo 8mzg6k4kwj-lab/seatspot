@@ -13,7 +13,9 @@ export interface Cafe {
   rating: number;
   priceLevel: 1 | 2 | 3;
   imageUrl: string;
-  lastUpdated: string; // "2 min ago", etc.
+  lastUpdated: string;
+  lat: number;
+  lng: number;
 }
 
 export const cafes: Cafe[] = [
@@ -33,6 +35,7 @@ export const cafes: Cafe[] = [
     priceLevel: 2,
     imageUrl: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&auto=format&fit=crop",
     lastUpdated: "2 min ago",
+    lat: 40.7459, lng: -73.9876,
   },
   {
     id: "bluebottle-bryant",
@@ -50,6 +53,7 @@ export const cafes: Cafe[] = [
     priceLevel: 2,
     imageUrl: "https://images.unsplash.com/photo-1493857671505-72967e2e2760?w=800&auto=format&fit=crop",
     lastUpdated: "5 min ago",
+    lat: 40.7531, lng: -73.9836,
   },
   {
     id: "joe-coffee-uni",
@@ -67,6 +71,7 @@ export const cafes: Cafe[] = [
     priceLevel: 2,
     imageUrl: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&auto=format&fit=crop",
     lastUpdated: "1 min ago",
+    lat: 40.7340, lng: -73.9920,
   },
   {
     id: "black-cat-soho",
@@ -84,6 +89,7 @@ export const cafes: Cafe[] = [
     priceLevel: 1,
     imageUrl: "https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=800&auto=format&fit=crop",
     lastUpdated: "8 min ago",
+    lat: 40.7196, lng: -73.9870,
   },
   {
     id: "devocion-brooklyn",
@@ -101,6 +107,7 @@ export const cafes: Cafe[] = [
     priceLevel: 2,
     imageUrl: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&auto=format&fit=crop",
     lastUpdated: "3 min ago",
+    lat: 40.7150, lng: -73.9610,
   },
   {
     id: "la-colombe-tribeca",
@@ -118,6 +125,7 @@ export const cafes: Cafe[] = [
     priceLevel: 2,
     imageUrl: "https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=800&auto=format&fit=crop",
     lastUpdated: "12 min ago",
+    lat: 40.7270, lng: -74.0065,
   },
   {
     id: "think-coffee-bway",
@@ -135,6 +143,7 @@ export const cafes: Cafe[] = [
     priceLevel: 1,
     imageUrl: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=800&auto=format&fit=crop",
     lastUpdated: "4 min ago",
+    lat: 40.7240, lng: -74.0010,
   },
   {
     id: "kaffe1668",
@@ -152,6 +161,7 @@ export const cafes: Cafe[] = [
     priceLevel: 2,
     imageUrl: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&auto=format&fit=crop",
     lastUpdated: "6 min ago",
+    lat: 40.7180, lng: -74.0095,
   },
 ];
 
