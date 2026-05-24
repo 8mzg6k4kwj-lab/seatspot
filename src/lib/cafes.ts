@@ -85,7 +85,10 @@ const seed: CafeSeed[] = [
 
 const minutesAgoMap: Record<string, number> = {
   "1 min ago": 1, "2 min ago": 2, "3 min ago": 3, "4 min ago": 4,
-  "5 min ago": 5, "6 min ago": 6, "8 min ago": 8, "12 min ago": 12,
+  "5 min ago": 5, "6 min ago": 6, "7 min ago": 7, "8 min ago": 8,
+  "9 min ago": 9, "10 min ago": 10, "11 min ago": 11, "12 min ago": 12,
+  "13 min ago": 13, "14 min ago": 14, "15 min ago": 15, "16 min ago": 16,
+  "17 min ago": 17,
 };
 
 export const cafes: Cafe[] = seed.map((s) => ({
