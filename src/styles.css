@@ -140,9 +140,10 @@
     border-color: var(--color-border);
   }
 
-  body {
-    background-color: var(--color-background);
+  html, body {
+    background-color: #462b1b;
     color: var(--color-foreground);
     font-family: system-ui, -apple-system, sans-serif;
+    min-height: 100%;
   }
 }
