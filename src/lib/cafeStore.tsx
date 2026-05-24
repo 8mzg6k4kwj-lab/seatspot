@@ -44,10 +44,17 @@ export function CafeStoreProvider({ children }: { children: React.ReactNode }) {
     () =>
       seedCafes.map((c) => {
         const o = overrides[c.id];
-        return o ? { ...c, seatStatus: o.seatStatus, lastUpdatedAt: o.lastUpdatedAt } : c;
+        if (!o) return c;
+        return {
+          ...c,
+          seatStatus: o.seatStatus,
+          lastUpdatedAt: o.lastUpdatedAt,
+          lastUpdated: formatRelative(o.lastUpdatedAt),
+        };
       }),
     [overrides]
   );
+
 
 
   const updateSeats = useCallback((id: string, status: SeatStatus) => {
