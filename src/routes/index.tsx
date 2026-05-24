@@ -62,8 +62,8 @@ function HomePage() {
   return (
     <div className="min-h-screen bg-[#462b1b] text-[#f2e3d4]">
       {/* Header */}
-      <div className="sticky top-0 z-10 bg-background/80 backdrop-blur-lg border-b border-border">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-3 bg-[#25160e] text-[#f2e3d4]">
+      <div className="sticky top-0 z-10 bg-[#25160e] border-b border-[#f2e3d4]/10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-3 text-[#f2e3d4]">
           <div className="flex items-center justify-between mb-3 gap-4">
             <div>
               <h1 className="text-xl sm:text-2xl font-bold text-[#f2e3d4]">SeatSpot</h1>
@@ -83,14 +83,14 @@ function HomePage() {
       </div>
 
       {/* Stats */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 bg-[#462b1b]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex items-center justify-between text-sm text-[#f2e3d4]">
           <span>{filteredCafes.length} cafe{filteredCafes.length !== 1 ? "s" : ""}</span>
         </div>
       </div>
 
       {/* Cafe List or Map */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 bg-[#462b1b]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
         {view === "map" ? (
           <MapView cafes={filteredCafes} />
         ) : (
