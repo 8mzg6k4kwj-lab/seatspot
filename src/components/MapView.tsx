@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
+import { Star, Users, MapPin, Wifi, Plug } from "lucide-react";
 import type { Cafe } from "@/lib/cafes";
-import { CafeCard } from "./CafeCard";
 
 interface MapViewProps {
   cafes: Cafe[];
