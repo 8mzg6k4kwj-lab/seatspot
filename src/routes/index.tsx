@@ -60,7 +60,7 @@ function HomePage() {
   const openCount = cafes.filter((c) => c.seatsAvailable > 0).length;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#462b1b] text-[#f2e3d4]">
       {/* Header */}
       <div className="sticky top-0 z-10 bg-background/80 backdrop-blur-lg border-b border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-3 bg-[#25160e] text-[#f2e3d4]">
