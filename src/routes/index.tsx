@@ -94,7 +94,7 @@ function HomePage() {
       </div>
 
       {/* Cafe List or Map */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 bg-[#462b1b]">
         {view === "map" ? (
           <MapView cafes={filteredCafes} />
         ) : (
