@@ -86,10 +86,6 @@ function HomePage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 bg-[#462b1b]">
         <div className="flex items-center justify-between text-sm text-muted-foreground">
           <span>{filteredCafes.length} cafe{filteredCafes.length !== 1 ? "s" : ""}</span>
-          <span className="flex items-center gap-1">
-            <span className="inline-block w-2 h-2 rounded-full bg-seat-green" />
-            
-          </span>
         </div>
       </div>
 
