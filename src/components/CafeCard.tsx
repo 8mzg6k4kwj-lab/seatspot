@@ -2,7 +2,6 @@ import { MapPin, Wifi, Plug, Star, Users } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import type { Cafe } from "@/lib/cafes";
 
-
 interface CafeCardProps {
   cafe: Cafe;
 }
