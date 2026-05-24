@@ -13,6 +13,7 @@ export const Route = createFileRoute("/")({
 function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState<"all" | "open" | "nearby" | "outlets">("all");
+  const [view, setView] = useState<"list" | "map">("list");
 
   const filteredCafes = useMemo(() => {
     let result = [...cafes];
@@ -65,7 +66,8 @@ function HomePage() {
           <div className="flex items-center justify-between mb-3 gap-4">
             <div>
               <h1 className="text-xl sm:text-2xl font-bold text-[#f2e3d4]">SeatSpot</h1>
-              <div className="flex items-center gap-1 text-sm text-[#f2e3d4]/70 mt-0.5">
+              <p className="text-sm text-[#f2e3d4]/80 mt-0.5 italic">find a cafe. find a seat.</p>
+              <div className="flex items-center gap-1 text-sm text-[#f2e3d4]/70 mt-1">
                 <MapPin size={14} />
                 <span>Near Union Square</span>
               </div>
@@ -77,6 +79,8 @@ function HomePage() {
             onSearchChange={setSearchQuery}
             activeFilter={activeFilter}
             onFilterChange={setActiveFilter}
+            view={view}
+            onViewChange={setView}
           />
         </div>
       </div>
