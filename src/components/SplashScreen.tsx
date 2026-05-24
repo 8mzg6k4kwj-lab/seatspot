@@ -25,7 +25,7 @@ export function SplashScreen({ children }: { children: React.ReactNode }) {
         className={`
           fixed inset-0 z-50 flex flex-col items-center justify-center
           bg-[#462b1b] transition-all duration-700 ease-out
-          ${isFading ? "opacity-1 pointer-events-none" : "opacity-100"}
+          ${isFading ? "opacity-0 pointer-events-none" : "opacity-100"}
         `}
         aria-hidden={isFading}
       >
