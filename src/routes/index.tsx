@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { PlayCircle } from "lucide-react";
 import { CafeCard } from "@/components/CafeCard";
 import { FilterBar } from "@/components/FilterBar";
 import { MapView } from "@/components/MapView";
@@ -102,6 +103,16 @@ function HomePage() {
           </div>
         )}
       </div>
+
+      {/* Subtle demo video link */}
+      <Link
+        to="/demo"
+        className="fixed bottom-4 right-4 z-20 inline-flex items-center gap-1.5 rounded-full bg-[#25160e]/80 backdrop-blur-sm border border-[#f2e3d4]/15 px-3 py-1.5 text-xs text-[#f2e3d4]/70 hover:text-[#f2e3d4] hover:bg-[#25160e] transition-colors shadow-md"
+        aria-label="Watch demo video"
+      >
+        <PlayCircle size={14} />
+        Demo
+      </Link>
     </div>
   );
 }
