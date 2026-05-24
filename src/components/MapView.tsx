@@ -64,10 +64,29 @@ export function MapView({ cafes }: MapViewProps) {
               },
             }}
           >
-            <Popup autoPan={false} closeButton={false} offset={[0, -8]} maxWidth={300}>
-              <div className="w-64">
-                <CafeCard cafe={cafe} />
-              </div>
+            <Popup autoPan closeButton={false} offset={[0, -8]} maxWidth={240}>
+              <Link
+                to="/cafe/$cafeId"
+                params={{ cafeId: cafe.id }}
+                className="block w-52 text-foreground no-underline"
+              >
+                <div className="flex items-start justify-between gap-2">
+                  <div className="min-w-0">
+                    <h3 className="font-bold text-sm truncate !m-0">{cafe.name}</h3>
+                    <p className="text-xs text-muted-foreground truncate !m-0 !mt-0.5">{cafe.address}</p>
+                  </div>
+                  <span className="flex items-center gap-0.5 rounded-full bg-black/80 px-1.5 py-0.5 text-[10px] text-white shrink-0">
+                    <Star size={10} className="fill-amber-400 text-amber-400" />
+                    {cafe.rating}
+                  </span>
+                </div>
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-2 text-xs text-muted-foreground">
+                  <span className="flex items-center gap-1"><Users size={12} />{cafe.seatsAvailable}</span>
+                  <span className="flex items-center gap-1"><MapPin size={12} />{cafe.distance}mi</span>
+                  {cafe.wifi && <span className="flex items-center gap-1"><Wifi size={12} />WiFi</span>}
+                  {cafe.outlets && <span className="flex items-center gap-1"><Plug size={12} />Outlets</span>}
+                </div>
+              </Link>
             </Popup>
           </CircleMarker>
         ))}
